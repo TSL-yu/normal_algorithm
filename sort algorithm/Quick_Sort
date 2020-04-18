@@ -1,0 +1,31 @@
+def quick_sort(l):
+    
+    def split_part(l,i,j):
+        if i>=j:
+            return i     
+        tmp=l[i]
+        while i<j:
+            
+            while i<j and tmp<=l[j]:
+                j-=1
+                
+            if i<j:
+                l[i]=l[j]
+            while i<j and tmp>=l[i]:
+                i+=1
+            if i<j:
+                l[j]=l[i]
+            
+        l[i]=tmp
+        return i
+      
+    def sort(l,i,j):
+        if i>=j:
+            return l
+        k=split_part(l,i,j)
+        sort(l,i,k-1)
+        sort(l,k+1,j) 
+        return l
+    
+    sort(l,0,len(l)-1)
+    return l
