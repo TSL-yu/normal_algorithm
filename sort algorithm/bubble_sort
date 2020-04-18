@@ -1,0 +1,64 @@
+#sort algorithm review
+
+#### 最初版本
+def bubble_sort(l):
+    if l==[]:
+        return l
+    elif len(l)==1:
+        return l   
+    length=len(l)
+    
+    for i in range(length-1):
+        for j in range(length-1-i):
+            if l[j]>l[j+1]:
+                tmp=l[j]
+                l[j]=l[j+1]
+                l[j+1]=tmp
+    return l
+    
+#### 优化1，当某一次冒泡，并未发生改变时，说明已经完成排序，用一个flag表示
+
+def bubble_sort_2(l):
+    if l==[]:
+        return l
+    elif len(l)==1:
+        return l   
+    length=len(l)
+    
+    for i in range(length-1):
+        flag=True
+        for j in range(length-1-i):
+            if l[j]>l[j+1]:
+                tmp=l[j]
+                l[j]=l[j+1]
+                l[j+1]=tmp
+                flag=False
+        if flag==True:
+            break
+    return l
+    
+    
+    
+    
+  #### 优化2，每一次遍历，不需要遍历到最后，可以用一个指标来表示
+    
+def bubble_sort_3(l):
+    if l==[]:
+        return l
+    elif len(l)==1:
+        return l   
+    length=len(l)
+    k=length-1
+    for i in range(length-1):
+        flag=True
+        
+        for j in range(k):
+            if l[j]>l[j+1]:
+                tmp=l[j]
+                l[j]=l[j+1]
+                l[j+1]=tmp
+                k=j
+                flag=False
+        if flag==True:
+            break
+    return l
